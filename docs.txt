@@ -1,0 +1,64 @@
+< Parametros do XML para Opencart
+
+https://github.com/opencart/opencart/wiki/Modification-System
+https://github.com/vqmod/vqmod/wiki/Scripting
+
+
+OCMOD x VQMOD
+// =============================================================================================================
+	ATRIBUTOS PERMITIDOS
+
+	trim="(true|false)"						-> Retira espaço no ínicio e final de uma string
+	regex="(true|false)"					-> Retorna a expressão regular atual
+	index="(number)"						-> indica a posição que deseja inserir caso tenha mais que 1
+	position="(replace|before|after)" 		-> indica como deseja inserir "subistituir, antes ou depois"
+	offset="(number)"						-> indica quantas linhas deseja pular
+	limit="(number)"						-> indica quantas vezes deseja executar (quando existir mais posições encontradas pela busca)
+	error="(log/skip/abort)"				-> Envia uma mensagem de erro para as rotinas definidas para gerenciamento de erros ou termina o script
+	
+	
+	<?xml version="1.0" encoding="utf-8"?>  			-> declaração sobre o tipo de arquivo
+	<modification></modification>						-> declaração para criar a modificação
+	<file path="caminho do arquivo"></file>				-> Selecione o caminho do arquivo que deseja substituir o codigo
+	<operation error="log"></operation>					-> Bloco de operação da modificação
+	<ignoreif regex="true"><![CDATA[ ]]></ignoreif> 	-> caso exista ingore a ação*
+	<search><![CDATA[ ]]></search>						-> realiza a busca da posição
+	<add position="before"><![CDATA[ ]]></add>			-> adiciona o novo código
+	
+	// =============================================================================================================
+	POSSIVEIS AÇÕES
+	
+	<modification>
+		->	<file path="">									= URL do arquivo comulmente usado
+		->	<file name="">									= URL do arquivo (depreciado), era usado no vqmod
+		->	<operation error="log">							= Gera log de erros caso exista
+		->	<operation error="skip">						= Não gera log de erros
+		->	<operation error="abort">						= Para de rodar o bloco do script caso não encontre a busca
+		->	<operation info="informações">					= Adicione uma informação no bloco que esta modificando
+		->	<search>										= busca posição
+		->	<search index="0"> 								= busca posição 1 do vetor caso ele se repita no bloco
+		->	<add position="before">							= adiciona antes
+		->	<add position="after">							= adiciona depois
+		->	<add position="replace">						= substitui o comando
+		->	<add position="after" offset="1">				= Indica onde adicionar contando 2 linhas apos a busca
+	
+
+// =============================================================================================================
+	
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>NOME DA MODIFICAÇÃO</name>
+  <code>CODIGO DA MOD.</code>
+	<version>VERSAO DA MODIFICAÇÃO</version>
+	<author>NOME DO AUTOR</author>
+	<link>http://www.meusite.com</link>
+		
+    <file path="">
+			<operation error="log">
+				<search><![CDATA[ ]]></search>
+				<add position="before"><![CDATA[ ]]></add>
+			</operation>
+    </file>
+</modification>
+
+// =============================================================================================================
