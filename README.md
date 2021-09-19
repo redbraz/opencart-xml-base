@@ -1,6 +1,32 @@
 # 🇧🇷 opencart Base OCMOD/XML
  Arquivo base para criação de modificações em ocmod xml
 
+### DECLARAÇÕES
+~~~
+- <?xml version="1.0" encoding="utf-8"?>
+   -> Declaração sobre o tipo de arquivo
+   
+- <modification></modification>
+  -> Declaração para criar a modificação
+  
+- <file path="caminho do arquivo"></file>
+  -> Selecione o caminho do arquivo que deseja substituir o codigo
+  
+- <operation error="log"></operation>
+  -> Bloco de operação da modificação
+  
+- <ignoreif regex="true"><![CDATA[ ]]></ignoreif>
+  -> caso exista ingore a ação*
+  
+- <search><![CDATA[ ]]></search>
+  -> realiza a busca da posição
+  
+- <add position=""><![CDATA[ ]]></add>
+  -> adiciona o novo código
+  
+- <![CDATA[]]>
+  -> Indica que o texto dentro da área dele é um texto comum e não pode ser interpretado como parte da marcação do XML.
+~~~
 
 ### ATRIBUTOS
 
@@ -27,7 +53,7 @@
 
 ###  Base XML
 
-```
+~~~javascript
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
   <name>NAME MODIFICATION</name>
@@ -44,4 +70,4 @@
 		</operation>
 	</file>
 </modification>
-```
+~~~
